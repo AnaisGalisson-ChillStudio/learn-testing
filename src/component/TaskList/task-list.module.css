@@ -1,0 +1,15 @@
+.item_container {
+   min-width: 500px; 
+   display: flex;
+   justify-content: space-between;
+}
+
+.item_container:hover {
+    background-color: azure;
+    cursor: pointer;
+}
+
+.text_task_done {
+    text-decoration-line: line-through;
+    color: darkgray
+}
