@@ -7,8 +7,10 @@ function InputSearch({ onSubmit, taskListLenght }) {
 
   const onNewTaskSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ id: taskListLenght, text: task, isDone: false });
-    setTask("");
+    if (task !== "") {
+      onSubmit({ id: taskListLenght, text: task, isDone: false });
+      setTask("");
+    }
   };
 
   return (
@@ -20,7 +22,11 @@ function InputSearch({ onSubmit, taskListLenght }) {
             onChange={(event) => setTask(event.target.value)}
             value={task}
           />
-          <Button variant="outline-secondary" type="submit">
+          <Button
+            disabled={task === ""}
+            variant="outline-secondary"
+            type="submit"
+          >
             Add my task
           </Button>
         </InputGroup>
