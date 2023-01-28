@@ -18,11 +18,13 @@ function InputSearch({ onSubmit, taskListLenght }) {
       <Form onSubmit={onNewTaskSubmit}>
         <InputGroup className="mb-3">
           <Form.Control
+            data-testid="input-search-input"
             placeholder="New task"
             onChange={(event) => setTask(event.target.value)}
             value={task}
           />
           <Button
+            data-testid="input-search-button"
             disabled={task === ""}
             variant="outline-secondary"
             type="submit"
