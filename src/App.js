@@ -6,6 +6,7 @@ import { TaskList } from "./component/TaskList/TaskList";
 import { Statistics } from "./component/Statistics/Statistics";
 import { Level1 } from "./component/Levels/Level1";
 import { ThemeModeContext, THEME } from "./contexts/ThemeModeContext";
+import { CreditCard } from "./component/CreditCart/CreditCard";
 function App() {
   // THEME CONTEXT
   const initialThemeMode = useContext(ThemeModeContext);
@@ -44,6 +45,7 @@ function App() {
           <TaskList taskList={taskList} onTaskClick={updateTaskList} />
           <Statistics taskList={taskList} />
           <Level1 />
+          <CreditCard />
         </div>
       </div>
     </ThemeModeContext.Provider>
