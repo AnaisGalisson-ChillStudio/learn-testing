@@ -4,6 +4,7 @@ import { Header } from "./component/Header/Header";
 import { InputSearch } from "./component/InputSearch/InputSearch";
 import { TaskList } from "./component/TaskList/TaskList";
 import { Statistics } from "./component/Statistics/Statistics";
+import { Level1 } from "./component/Levels/Level1";
 function App() {
   const [taskList, setTaskList] = useState([
     { id: 0, text: "Add new tasks", isDone: false },
@@ -30,6 +31,7 @@ function App() {
         />
         <TaskList taskList={taskList} onTaskClick={updateTaskList} />
         <Statistics taskList={taskList} />
+          <Level1 />
       </div>
     </div>
   );
