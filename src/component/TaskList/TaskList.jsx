@@ -2,26 +2,15 @@ import { CheckCircleFill, Circle } from "react-bootstrap-icons";
 import ListGroup from "react-bootstrap/ListGroup";
 import style from "./task-list.module.css";
 
-export function TaskList({ taskList, setTaskList }) {
-  // Update the status isDone of the task clicked
-  const updateTaskList = (task) => {
-    const updatedList = taskList.map((currentTask) => {
-      if (task.id === currentTask.id) {
-        return { ...currentTask, isDone: !currentTask.isDone };
-      }
-      return currentTask;
-    });
-    setTaskList(updatedList);
-  };
-
+export function TaskList({ taskList, onTaskClick }) {
   const renderTask = (task) => {
     return (
       <ListGroup.Item
         key={task.id}
         className={style.item_container}
-        onClick={() => updateTaskList(task)}
+        onClick={() => onTaskClick(task)}
       >
-        <div className={task.isDone ? style.text_task_done : {}}>
+        <div className={task.isDone ? style.text_task_done : undefined}>
           {task.text}
         </div>
         {task.isDone ? (
