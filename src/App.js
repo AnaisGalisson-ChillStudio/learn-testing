@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
 import { Header } from "./component/Header/Header";
 import { InputSearch } from "./component/InputSearch/InputSearch";
 import { TaskList } from "./component/TaskList/TaskList";
 import { Statistics } from "./component/Statistics/Statistics";
 import { Level1 } from "./component/Levels/Level1";
+import { ThemeModeContext, THEME } from "./contexts/ThemeModeContext";
 function App() {
+  // THEME CONTEXT
+  const initialThemeMode = useContext(ThemeModeContext);
+  const [themeMode, setThemeMode] = useState(initialThemeMode);
+
   const [taskList, setTaskList] = useState([
     { id: 0, text: "Add new tasks", isDone: false },
   ]);
@@ -20,20 +25,28 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="container">
-        <Header />
-        <InputSearch
-          onSubmit={(task) => {
-            setTaskList([task, ...taskList]);
-          }}
-          taskListLenght={taskList.length}
-        />
-        <TaskList taskList={taskList} onTaskClick={updateTaskList} />
-        <Statistics taskList={taskList} />
+    <ThemeModeContext.Provider value={{ themeMode, setThemeMode }}>
+      <div
+        className="App"
+        style={{
+          color: THEME[themeMode].textColor,
+          backgroundColor: THEME[themeMode].backgroundColor,
+        }}
+      >
+        <div className="container">
+          <Header />
+          <InputSearch
+            onSubmit={(task) => {
+              setTaskList([task, ...taskList]);
+            }}
+            taskListLenght={taskList.length}
+          />
+          <TaskList taskList={taskList} onTaskClick={updateTaskList} />
+          <Statistics taskList={taskList} />
           <Level1 />
+        </div>
       </div>
-    </div>
+    </ThemeModeContext.Provider>
   );
 }
 
