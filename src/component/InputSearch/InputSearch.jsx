@@ -11,9 +11,9 @@ function InputSearch({ onSubmit, taskListLenght }) {
   const onNewTaskSubmit = (event) => {
     event.preventDefault();
     if (task !== "") {
-      onSubmit({ id: taskListLenght, text: task, isDone: false });
-      setTask("");
+      // onSubmit({ id: taskListLenght, text: task, isDone: false });
       dispatch(addTask({ id: taskListLenght, text: task, isDone: false }));
+      setTask("");
     }
   };
 
