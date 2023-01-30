@@ -3,13 +3,13 @@ import { InputSearch } from "./InputSearch";
 
 test("The submit button should be disabled if no text in input", () => {
   render(<InputSearch />);
-  const inputSearchInput = screen.getByTestId("input-search-input");
+  const inputSearchInput = screen.getByRole("input");
   const inputSearchButton = screen.getByTestId("input-search-button");
   expect(inputSearchInput.value).toBe("");
   expect(inputSearchButton).toBeDisabled();
 });
 
-test("Can submit the form if there is no text in input", () => {
+test("The submit button should be enbale if there is some text in the iunput", () => {
   render(<InputSearch />);
   const inputSearchInput = screen.getByTestId("input-search-input");
   const inputSearchButton = screen.getByTestId("input-search-button");

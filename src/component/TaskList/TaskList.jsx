@@ -14,13 +14,17 @@ export function TaskList({ taskList, onTaskClick }) {
           {task.text}
         </div>
         {task.isDone ? (
-          <CheckCircleFill width="20" height="20" />
+          <CheckCircleFill data-testid="check-circle" width="20" height="20" />
         ) : (
-          <Circle width="20" height="20" />
+          <Circle data-testid="circle" width="20" height="20" />
         )}
       </ListGroup.Item>
     );
   };
 
-  return <ListGroup>{taskList.map((task) => renderTask(task))}</ListGroup>;
+  return (
+    <div role="contentinfo">
+      <ListGroup>{taskList.map((task) => renderTask(task))}</ListGroup>;
+    </div>
+  );
 }

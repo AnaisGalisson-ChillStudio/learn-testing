@@ -22,6 +22,8 @@ function InputSearch({ onSubmit, taskListLenght }) {
             placeholder="New task"
             onChange={(event) => setTask(event.target.value)}
             value={task}
+            name="input-search"
+            role="input"
           />
           <Button
             data-testid="input-search-button"
