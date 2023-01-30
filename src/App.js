@@ -4,7 +4,11 @@ import { Header } from "./component/Header/Header";
 import { InputSearch } from "./component/InputSearch/InputSearch";
 import { TaskList } from "./component/TaskList/TaskList";
 import { Statistics } from "./component/Statistics/Statistics";
+import { useSelector } from "react-redux";
 function App() {
+  const storeTaskList = useSelector((store) => store.TASK.taskList);
+
+  console.log(storeTaskList);
   const [taskList, setTaskList] = useState([
     { id: 0, text: "Add new tasks", isDone: false },
   ]);
@@ -24,12 +28,12 @@ function App() {
         <Header />
         <InputSearch
           onSubmit={(task) => {
-            setTaskList([task, ...taskList]);
+            setTaskList([storeTaskList, ...taskList]);
           }}
-          taskListLenght={taskList.length}
+          taskListLenght={storeTaskList.length}
         />
-        <TaskList taskList={taskList} onTaskClick={updateTaskList} />
-        <Statistics taskList={taskList} />
+        <TaskList taskList={storeTaskList} onTaskClick={updateTaskList} />
+        <Statistics taskList={storeTaskList} />
       </div>
     </div>
   );
